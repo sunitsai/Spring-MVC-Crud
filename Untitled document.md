@@ -75,7 +75,7 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
 Replace rootpassword with your actual MySQL password.
-
+```
 ### Step 5: Add Dependencies (Libraries)
 Add the necessary libraries for MySQL and Spring MVC in the pom.xml file:
 ```xml
@@ -91,7 +91,7 @@ Add the necessary libraries for MySQL and Spring MVC in the pom.xml file:
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
-
+```
 ### Step 6: Create a Model Class (Item.java)
 This class represents an "item" that you want to store in the database. Create Item.java in the com.example.demo.model package:
 
@@ -137,6 +137,8 @@ public class Item {
         this.description = description;
     }
 }
+
+```
 ### Step 7: Create a Repository Interface
 This interface allows interaction with the database for CRUD operations. Create ItemRepository.java in com.example.demo.repository:
 ```java
@@ -148,7 +150,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface ItemRepository extends CrudRepository<Item, Long> {
     // Custom methods can be added here if needed
 }
-
+```
 ### Step 8: Create a Service Layer
 Create the service layer to handle the business logic for CRUD operations. Create ItemService.java in com.example.demo.service:
 
@@ -186,6 +188,8 @@ public class ItemService {
         itemRepository.deleteById(id);
     }
 }
+
+```
 ### Step 9: Create a Controller Class
 The controller handles HTTP requests and serves pages. Create ItemController.java in com.example.demo.controller:
 
@@ -244,6 +248,8 @@ public class ItemController {
         return "redirect:/items";
     }
 }
+
+```
 ### Step 10: Create Views (HTML Files)
 Create the necessary HTML files for the user interface. These files should be placed in src/main/resources/templates:
 
@@ -280,7 +286,7 @@ Example of items.html:
     </table>
 </body>
 </html>
-
+```
 ### Step 11: Run the Application
 1. Right-click on the project and select Run As > Spring Boot App.
 2. Open your browser and navigate to http://localhost:8080/items.
