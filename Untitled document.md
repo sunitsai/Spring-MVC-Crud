@@ -287,7 +287,79 @@ Example of items.html:
 </body>
 </html>
 ```
-### Step 11: Run the Application
+
+### Step 11: Create Views (HTML Files)
+Create the necessary HTML files for the user interface. These files should be placed in src/main/resources/templates:
+CREATE.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Item</title>
+</head>
+<body>
+    <h1>Create a New Item</h1>
+
+    <form action="/items" method="POST">
+        <!-- Name Field -->
+        <label for="name">Item Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+
+        <!-- Description Field -->
+        <label for="description">Item Description:</label>
+        <textarea id="description" name="description" required></textarea>
+        <br><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Create Item</button>
+    </form>
+
+    <br>
+    <a href="/items">Back to Items List</a>
+</body>
+</html>
+
+```
+### Step 12: Create Views (HTML Files)
+Create the necessary HTML files for the user interface. These files should be placed in src/main/resources/templates:
+Edit.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+</head>
+<body>
+    <h1>Edit Item</h1>
+
+    <!-- Form to Edit Item -->
+    <form action="/items/edit/{{item.id}}" method="POST">
+        <!-- Name Field -->
+        <label for="name">Item Name:</label>
+        <input type="text" id="name" name="name" value="{{item.name}}" required>
+        <br><br>
+
+        <!-- Description Field -->
+        <label for="description">Item Description:</label>
+        <textarea id="description" name="description" required>{{item.description}}</textarea>
+        <br><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Update Item</button>
+    </form>
+
+    <br>
+    <a href="/items">Back to Items List</a>
+</body>
+</html>
+
+```
+### Step 13: Run the Application
 1. Right-click on the project and select Run As > Spring Boot App.
 2. Open your browser and navigate to http://localhost:8080/items.
 
